@@ -1,0 +1,17 @@
+== Immunization Calendar for India
+
+ImmuCal is a web application which can generate immunization calendar that is in
+sync with IMA recommended vaccinations for child born in India.
+
+=== Primary Functionality
+
+Register and add children, where each children is provided a customized immunization
+calendar based on their date of birth. This can be accessed anytime by logging in.
+More than one children can be added, proving them each with their name and date
+of birth.
+
+=== Secondary Functionality
+
+Subscribe to alters for getting reminders for vaccinations as per the calendar,
+either through email or through SMS or both. This functionality is consolidated
+across all added children
