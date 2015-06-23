@@ -24,4 +24,6 @@ class User < ActiveRecord::Base
                     uniqueness: { case_sensitive: false }
   validates :password, presence: true, length: { minimum: 6 }
   validates :password_confirmation, presence: true
+  # handling password digest can't be blank error
+  after_validation { self.errors.messages.delete(:password_digest) }
 end

@@ -7,4 +7,5 @@ Immucal::Application.routes.draw do
   match '/about',   to: 'static_pages#about'
   match '/contact', to: 'static_pages#contact'
   
+  match '/signup',  to: 'users#new'
 end
