@@ -1,9 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  # filter sensitive data from logging
-  filter_parameter_logging "password"
-
   # sessions_helper contains session related helper methods
   include SessionsHelper
 
