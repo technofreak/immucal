@@ -11,6 +11,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
+      sign_in @user
       flash[:success] = "Account has been created successfully. Welcome to ImmuCal."
       redirect_to @user
     else
