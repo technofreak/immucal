@@ -11,7 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150623055005) do
+ActiveRecord::Schema.define(:version => 20150624071731) do
+
+  create_table "children", :force => true do |t|
+    t.string   "name"
+    t.date     "date_of_birth"
+    t.string   "gender"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.integer  "user_id"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "name"
@@ -24,5 +33,25 @@ ActiveRecord::Schema.define(:version => 20150623055005) do
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["remember_token"], :name => "index_users_on_remember_token"
+
+  create_table "vaccinations", :force => true do |t|
+    t.integer  "child_id"
+    t.integer  "vaccine_id"
+    t.string   "status"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "vaccines", :force => true do |t|
+    t.string   "name"
+    t.string   "disease"
+    t.string   "recommended_by"
+    t.integer  "age_start"
+    t.integer  "age_end"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.string   "dosage"
+    t.string   "route"
+  end
 
 end

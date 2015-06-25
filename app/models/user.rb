@@ -8,10 +8,16 @@
 #  password_digest :string(255)
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  remember_token  :string(255)
 #
 
 class User < ActiveRecord::Base
+  # a user can be associated with many children
+  has_many :children
+
   attr_accessible :email, :name, :password, :password_confirmation
+  
+  # bring in all the password management magic
   has_secure_password
 
   # convert email to downcase before saving
