@@ -13,7 +13,7 @@
 
 class User < ActiveRecord::Base
   # a user can be associated with many children
-  has_many :children
+  has_many :children,  dependent: :destroy
 
   attr_accessible :email, :name, :password, :password_confirmation
   

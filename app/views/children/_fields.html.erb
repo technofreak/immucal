@@ -1,0 +1,8 @@
+<%= f.label :name %>
+<%= f.text_field :name %>
+
+<%= f.label :date_of_birth %>
+<%= f.date_select :date_of_birth %>
+
+<%= f.label :gender %>
+<%= f.select :gender, [['Male', 'male'], ['Female', 'female']], include_blank: false %>
