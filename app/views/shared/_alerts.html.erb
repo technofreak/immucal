@@ -1,0 +1,5 @@
+<% @user ||= current_user %>
+<% @alerts = current_alerts(current_user) %>
+<div class="alerts">
+	<%= @alerts %>
+</div>

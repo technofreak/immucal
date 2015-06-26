@@ -8,4 +8,9 @@ module ApplicationHelper
       "#{base_title} | #{page_title}"
     end
   end
+
+  # returns within-30-day alerts for the current_user
+  def current_alerts(user)
+    "Alerts are coming soon."
+  end
 end

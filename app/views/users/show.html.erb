@@ -2,30 +2,16 @@
 <div class="row">
   <aside class="span4">
     <section>
-      <h1>
-        <%= gravatar_for @user %>
-        <%= @user.name %>
-      </h1>
-    </section>
+        <%= render 'shared/user_info' %>
+      </section>
+      <section>
+        <%= render 'shared/stats' %>
+      </section>
+      <section>
+        <%= render 'shared/alerts' %>
+      </section>
   </aside>
   <div class="span8">
-    <% if @user.children.any? %>
-      <h3> <%= "Child".pluralize(@user.children.count) %> (<%= @user.children.count %>)</h3>
-      <ol class="children">
-      	<% @user.children.each do |child| %>
-      	<li>
- 			<%= link_to child.name, child %> born on <%= child.date_of_birth.strftime("%A %d %B %Y") %> 
-        <br />
-  			<span class="timestamp">
-    			Added <%= time_ago_in_words(child.created_at) %> ago.
-  			</span>
-        <%= link_to "edit", child, method: :edit, title: "Edit #{child.name}" %>
-    		<%= link_to "delete", child, method: :delete,
-                                     data: { confirm: "Are you sure?" },
-                                     title: "Delete #{child.name}" %>
-		</li>
-		<% end %>
-      </ol>
-    <% end %>
+    <%= render 'shared/children_list' %>
   </div>
 </div>

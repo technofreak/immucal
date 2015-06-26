@@ -1,10 +1,31 @@
 <% provide(:title, 'Home') %>
-<h1>Welcome to ImmuCal</h1>
 
-<p>
-	ImmuCal is a smart way to view an immunization calendar for your child online and maintain it, receiving reminder alerts whenever a vaccination is due in another 30 days.
-</p>
+<% if signed_in? %>
+  <div class="row">
+    <aside class="span3">
+      <section>
+        <%= render 'shared/user_info' %>
+      </section>
+      <section>
+        <%= render 'shared/stats' %>
+      </section>
+      <section>
+        <%= render 'shared/alerts' %>
+      </section>
+    </aside>
+    <div class="span8 offset1">
+      <%= render 'shared/children_list' %>
+    </div>
+  </div>
 
-<p>
-	ImmuCal keeps itself updated with the latest recommendations from IMA, and keeps you aware of the latest vaccinations that get recommended after your initial immunization calendar is generated.
-</p>
+<% else %>
+<div class="span12">
+	<h1>Welcome to ImmuCal</h1>
+	<p>
+		ImmuCal is a smart way to view an immunization calendar for your children and maintain it online, receiving reminder alerts whenever a vaccination is due in another 30 days [coming out soon!].
+	</p>
+	<p>
+		ImmuCal keeps itself updated with the latest recommendations from IMA, and keeps you aware of the latest vaccinations that get recommended after your initial immunization calendar is generated.
+	</p>
+</div>
+<% end %>

@@ -1,0 +1,6 @@
+<% @user ||= current_user %>
+<div class="stats">
+  <span>
+    <%= pluralize(@user.children.count, "child") %>
+  </span>
+</div>
