@@ -1,0 +1,5 @@
+<%= form_for @newchild, remote: locals[:postmode] == "ajax" ? true : false do |f| %>
+<%= render 'shared/error_messages', object: f.object %>
+<%= render 'children/fields', f: f %>
+  <%= f.submit "Add", class: "btn btn-large btn-primary", id: "children_form_submit" %>
+<% end %>

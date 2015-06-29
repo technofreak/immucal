@@ -2,22 +2,11 @@
 
 <% if signed_in? %>
   <div class="row">
-    <aside class="span3">
-      <section>
-        <%= render 'shared/user_info' %>
-      </section>
-      <section>
-        <%= render 'shared/stats' %>
-      </section>
-      <section>
-        <%= render 'shared/alerts' %>
-      </section>
-    </aside>
-    <div class="span8 offset1">
+    <%= render 'shared/sidebar' %>
+    <div class="span8" id="children_list">
       <%= render 'shared/children_list' %>
     </div>
   </div>
-
 <% else %>
 <div class="span12">
 	<h1>Welcome to ImmuCal</h1>

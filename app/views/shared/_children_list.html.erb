@@ -1,9 +1,11 @@
-<% if @user.children.any? %>
-  <h3> <%= "Child".pluralize(@user.children.count) %> (<%= @user.children.count %>)</h3>
+
+<% if current_user.children.any? %>
+  <h3> <%= "Child".pluralize(current_user.children.count) %> (<%= current_user.children.count %>)</h3>
   <ol class="children">
-  	<% @user.children.each do |child| %>
+  	<% current_user.children.each do |child| %>
+      <% if !child.id.nil? %>
     	<li>
-			    <%= link_to child.name, child %> born on <%= child.date_of_birth.strftime("%A %d %B %Y") %> 
+			    <%= link_to child.name, child %> born on <%= child.date_of_birth.strftime("%A %d %B %Y") %>
         <br />
 			  <span class="timestamp">
   			  Added <%= time_ago_in_words(child.created_at) %> ago.
@@ -13,6 +15,7 @@
                                    data: { confirm: "Are you sure?" },
                                    title: "Delete #{child.name}" %>
 	    </li>
+      <% end %>
   <% end %>
   </ol>
 <% end %>
