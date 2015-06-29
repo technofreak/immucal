@@ -10,10 +10,10 @@
 			  <span class="timestamp">
   			  Added <%= time_ago_in_words(child.created_at) %> ago.
 			  </span>
-        <%= link_to "edit", child, method: :edit, title: "Edit #{child.name}" %>
+        <%= link_to "edit", edit_child_path(child), title: "Edit #{child.name}" %>
   		  <%= link_to "delete", child, method: :delete,
-                                   data: { confirm: "Are you sure?" },
-                                   title: "Delete #{child.name}" %>
+                                     data: { confirm: "Are you sure?" },
+                                     title: "Delete #{child.name}" %>
 	    </li>
       <% end %>
   <% end %>

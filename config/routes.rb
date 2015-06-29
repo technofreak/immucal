@@ -3,7 +3,7 @@ Immucal::Application.routes.draw do
 
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
-  resources :children, only: [:new, :create, :update, :destroy]
+  resources :children, only: [:new, :create, :edit, :update, :destroy]
 
   root to: "static_pages#home"
 

@@ -1,2 +1,11 @@
-<h1>Children#edit</h1>
-<p>Find me in app/views/children/edit.html.erb</p>
+<% provide(:title, 'Edit your child') %>
+<h1>Edit your child</h1>
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for @child do |f| %>
+		<%= render 'shared/error_messages', object: f.object %>
+		<%= render 'children/fields', f: f %>
+	  	<%= f.submit "Edit", class: "btn btn-large btn-primary", id: "children_form_submit" %>
+	<% end %>
+  </div>
+</div>
