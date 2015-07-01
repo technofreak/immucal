@@ -1,0 +1,18 @@
+<% if @vaccines.any? %>
+	<h1>List of Vaccines</h1>
+	<ol>
+		<% @vaccines.each do |vaccine| %>
+			<li>
+				<%= link_to vaccine.name, vaccine %>
+				<% if can? :update, vaccine %>
+					<small>
+					 &#x270f; <%= link_to "edit", edit_vaccine_path(vaccine), title: "Edit #{vaccine.name}" %> 
+					</small>
+				<% end %>
+			</li>
+		<% end %>
+	</ol>
+<% end %>
+<% if !@vaccines.any? %>
+	<p class="alert alert-error">Currently there are no vaccinations in the database. Contact the administrator for details.</p>
+<% end %>

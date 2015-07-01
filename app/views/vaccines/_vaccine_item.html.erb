@@ -1,0 +1,49 @@
+<div class="table-responsive" id="vaccine-item-#{@vaccine.id}">
+	<table class="table-condensed">
+		<tr>
+			<th>Name of Vaccine</th>
+			<td><%= @vaccine.name %></td>
+		</tr>
+		<tr>
+			<th>Disease</th>
+			<td><%= @vaccine.disease %></td>
+		</tr>
+		<tr>
+			<th>Recommended By</th>
+			<td><%= @vaccine.recommended_by %></td>
+		</tr>
+		<% if @vaccine.age_start == 0 && @vaccine.age_end == 0 %>
+			<tr>
+				<th>Administer at</th>
+				<td>Birth</td>
+			</tr>
+		<% end %>
+		<% if @vaccine.age_start == @vaccine.age_end %>
+			<tr>
+			<th>Administer at</th>
+			<td><%= display_age(@vaccine.age_start) %></td>
+			</tr>
+		<% end %>
+		<% if @vaccine.age_start != @vaccine.age_end && @vaccine.age_end > 0 %>
+		<tr>
+			<th>Administer between</th>
+			<td><%= display_age(@vaccine.age_start) %> AND <%= display_age(@vaccine.age_end) %></td>
+		</tr>
+		<% end %>
+		<tr>
+			<th>Dosage</th>
+			<td><%= display_dosage(@vaccine.dosage) %></td>
+		</tr>
+		<tr>
+			<th>Route</th>
+			<td><%= display_route(@vaccine.route) %></td>
+		</tr>
+	</table>
+	<% if @vaccine.dosage == "multiple" %>
+		<p class="alert alert-warning">There are multiple dosages of this vaccine. Kindly check the calendar to know the exact details.</p>
+	<% end %>
+	<p class="alert alert-info">
+		<%= get_route_description(@vaccine.route) %>
+		<span class="pull-right"> &#x261b; <%= link_to "Source", "http://vaccine-safety-training.org/route-of-administration.html" %> </span>
+	</p>
+</div>

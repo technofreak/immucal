@@ -1,0 +1,12 @@
+<% provide(:title, 'Add a vaccine') %>
+<h1>Add a vaccine</h1>
+<div class="row">
+  <div class="span6 offset3">
+	<%= form_for @vaccine do |f| %>
+		<%= render 'shared/error_messages', object: f.object %>
+		<%= render 'vaccines/fields', f: f %>
+  		<%= f.submit "Add", class: "btn btn-large btn-primary", id: "vaccine_form_submit" %>
+  		<%= link_to "Cancel", vaccines_path,  {:class=>"btn btn-small btn-default"} %>
+	<% end %>
+  </div>
+</div>

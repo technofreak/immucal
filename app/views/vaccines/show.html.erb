@@ -1,0 +1,10 @@
+<% provide(:title, "Vaccines") %>
+<div class="row">
+	<% if signed_in? %>
+		<%= render "shared/sidebar" %>
+	<% end %>
+	<div class="span8">
+		<%= render "vaccine_item" %>
+		<span class="pull-right"><%= link_to "Back", :back, {:class=>"btn btn-small btn-primary"} %></span>
+	</div>
+</div>

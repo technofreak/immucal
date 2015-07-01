@@ -1,5 +1,6 @@
 <% provide(:title, 'Add a Child') %>
 <h1>Add a child</h1>
+<h2>( for <%= current_user.name %> )</h2>
 <div class="row">
   <div class="span6 offset3">
     <%= render 'children/add_child', locals: { postmode: "default" } %>

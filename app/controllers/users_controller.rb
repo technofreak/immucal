@@ -6,6 +6,7 @@ class UsersController < ApplicationController
 
   # show the profile page (get)
   def show
+    @newchild = current_user.children.new
   end
 
   def index

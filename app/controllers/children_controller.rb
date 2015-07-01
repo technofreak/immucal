@@ -1,6 +1,8 @@
 class ChildrenController < ApplicationController
+  load_and_authorize_resource
+  
   def new
-    @child = current_user.children.new
+    @newchild = current_user.children.new
   end
 
   def create

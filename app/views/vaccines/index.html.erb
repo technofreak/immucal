@@ -1,0 +1,15 @@
+<% provide(:title, "Vaccines") %>
+<div class="row">
+	<% if signed_in? %>
+		<%= render "shared/sidebar" %>
+	<% end %>
+	<div class="span8" id="vaccines_list">
+		<%= render "vaccines_list" %>
+	</div>
+	<% if can? :create, @vaccines %>
+	<div class="span8">
+		<span class="pull-left"> &#x2b; <%= link_to "Add a vaccine", new_vaccine_path %></span>
+		<span class="pull-right"> &#x261b; <%= link_to "Source: IMA", "http://www.ima-india.org/page.php?page_id=42" %> </span>
+	</div>
+	<% end %>
+</div>

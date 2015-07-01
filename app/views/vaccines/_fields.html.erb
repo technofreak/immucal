@@ -1,0 +1,20 @@
+<%= f.label :name %>
+<%= f.text_field :name %>
+
+<%= f.label :disease %>
+<%= f.text_field :disease %>
+
+<%= f.label :recommended_by %>
+<%= f.text_field :recommended_by %>
+
+<%= f.label "Starting age in weeks" %>
+<%= f.number_field :age_start %>
+
+<%= f.label "Ending age in weeks" %>
+<%= f.number_field :age_end %>
+
+<%= f.label :dosage %>
+<%= f.select :dosage, [['Single', 'single'], ['Multiple', 'multiple']], include_blank: false %>
+
+<%= f.label :route %>
+<%= f.select :route, [['Oral', 'Oral'], ['Intradermal', 'ID'], ['Subcutaneous', 'SC'], ['Intramuscular', 'IM']], include_blank: false %>

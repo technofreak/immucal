@@ -1,5 +1,5 @@
 <div class="stats">
   <span>
-    <%= pluralize(current_user.children.count, "child") %>
+    <%= link_to pluralize(current_user.children.count, "child"), current_user %>
   </span>
 </div>
