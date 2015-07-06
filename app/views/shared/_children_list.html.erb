@@ -5,8 +5,10 @@
   	<% current_user.children.each do |child| %>
       <% if !child.id.nil? %>
     	<li>
-			    <%= link_to child.name, child %> born on <%= child.date_of_birth.strftime("%A %d %B %Y") %>
-        <br />
+			  <%= link_to child.name, child %> born on <%= child.date_of_birth.strftime("%A %d %B %Y") %>
+        <br>
+        <span><strong><%= pluralize(child.vaccinations.count, "Vaccination") %></strong> listed in the calendar</span>
+        <br>
 			  <span class="timestamp">
   			  Added <%= time_ago_in_words(child.created_at) %> ago.
 			  </span>

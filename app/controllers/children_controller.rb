@@ -1,5 +1,9 @@
 class ChildrenController < ApplicationController
   load_and_authorize_resource
+
+  def show
+    @child = current_user.children.find_by_id(params[:id])
+  end
   
   def new
     @newchild = current_user.children.new

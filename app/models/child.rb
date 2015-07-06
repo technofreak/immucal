@@ -25,10 +25,22 @@ class Child < ActiveRecord::Base
   validates :gender, presence: true
   validate :birth_date_not_in_future
 
+  after_create :create_vaccinations
+
   def birth_date_not_in_future
     # date of birth can't be a date in future
     if date_of_birth > Date.today
       errors.add(:date_of_birth, "Birth date cannot be in future")
     end
   end
+
+  private
+  def create_vaccinations
+    # should be executed after a child is created
+    # for each vaccine, create an vaccination entry for the child
+    Vaccine.all.each do |vaccine|
+      self.vaccinations.create(vaccine_id: vaccine.id, status: 'scheduled')
+    end
+  end
+
 end
