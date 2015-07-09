@@ -22,7 +22,7 @@ class Vaccination < ActiveRecord::Base
 
   before_save :create_vaccination_due_dates
 
-  validates :status, presence: true, inclusion: { in: %w(scheduled given duenow notgiven) }
+  validates :status, presence: true, inclusion: { in: %w(given duenow skipped notgiven) }
 
   private
   def create_vaccination_due_dates

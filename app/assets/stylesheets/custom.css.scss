@@ -118,6 +118,38 @@ footer {
   @include box_sizing;
 }
 
+/* vaccination item styles */ 
+
+.element_box {
+  clear: both;
+  padding: 10px;
+  margin-top: 20px;
+  @include box_sizing;
+
+  border-color: $grayLight;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 10px;
+
+  font-family: Monaco, Menlo, Consolas, 'Courier New', monospace;
+}
+
+.vacc_notgiven {
+  background-color: #FFFACD;
+}
+
+.vacc_given {
+  background-color: #F0FFF0;
+}
+
+.vacc_due {
+  background-color: #F08080;
+}
+
+.vacc_skipped {
+  background-color: $grayDark;
+}
+
 /* sidebar */
 
 aside {

@@ -1,8 +1,16 @@
 class ChildrenController < ApplicationController
   load_and_authorize_resource
 
+  include VaccinesHelper
+
   def show
+    @newchild = current_user.children.new
     @child = current_user.children.find_by_id(params[:id])
+    @child.vaccinations.find_all_by_status("notgiven").each { |vaccination|
+      if vaccination.due_start <= Date.today + 30
+        vaccination.update_attribute("status", "duenow")
+      end
+    }
   end
   
   def new

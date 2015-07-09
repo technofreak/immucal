@@ -1,0 +1,43 @@
+<% provide(:title, "Vaccines") %>
+<div class="row">
+	<% if signed_in? %>
+		<%= render "shared/sidebar" %>
+	<% end %>
+	<div class="span8">
+		<div class="child-info">
+			<h4><%= @child.name %></h4>
+			<p>Born <strong><%= time_ago_in_words(@child.date_of_birth) %></strong> ago, of gender <strong><%= @child.gender.capitalize %></strong>.</p>
+		</div>
+
+		<div class="vacc-list">
+			<ul class="unstyled">
+			<% @child.vaccinations.each do |vaccination| %>
+				<li class="element_box <%= get_status_color_class(vaccination.status) %>">
+					<strong><%= vaccination.vaccine.name %></strong>
+					<br>
+					<span>For <%= vaccination.vaccine.disease %>, via <%= display_route(vaccination.vaccine.route) %></span>
+					<br>
+					<% if vaccination.due_start == vaccination.due_end %>
+						<span>Administer around <%= vaccination.due_end %></span>
+					<% end %>
+					<% if vaccination.due_start != vaccination.due_end %>
+						<span>Administer between <%= vaccination.due_start %> and <%= vaccination.due_end %></span>
+					<% end %>
+					<% if not ["given", "skipped"].include?(vaccination.status) %>
+						<div class="pull-right"><%= link_to "Given", "#", {:class=>"btn btn-small btn-success"} %></div>
+						<div class="pull-right">&nbsp;</div>
+						<div class="pull-right"><%= link_to "Skip", "#", {:class=>"btn btn-small btn-danger"} %></div>
+					<% end %>
+					<% if vaccination.status == "given" %>
+						<span class="pull-right">&#10004;</span>
+					<% end %>
+					<% if vaccination.status == "skipped" %>
+						<span class="pull-right">&#10008;</span>
+					<% end %> 
+				</li>
+			<% end %>
+			</ul>
+		</div>
+		<span class="pull-right"><%= link_to "Back", :back, {:class=>"btn btn-small btn-primary"} %></span>
+	</div>
+</div>

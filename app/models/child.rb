@@ -39,7 +39,7 @@ class Child < ActiveRecord::Base
     # should be executed after a child is created
     # for each vaccine, create an vaccination entry for the child
     Vaccine.all.each do |vaccine|
-      self.vaccinations.create(vaccine_id: vaccine.id, status: 'scheduled')
+      self.vaccinations.create(vaccine_id: vaccine.id, status: 'notgiven')
     end
   end
 
