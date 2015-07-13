@@ -1,0 +1,33 @@
+
+	<% @child.vaccinations.each do |vaccination| %>
+	<div class="vacci_box <%= get_status_class(vaccination.status) %> span3">
+		<h4><%= vaccination.vaccine.name %></h4>
+		<dl class="dl-horizontal">
+			<dt>Disease</dt>
+			<dd><%= vaccination.vaccine.disease %></dd>
+			<dt>Route</dt>
+			<dd><%= display_route(vaccination.vaccine.route) %></dd>
+			<dt>Due</dt>
+			<dd><%= get_vaccination_due_desc(vaccination) %></dd>
+		</dl>
+		<% if ["given", "skipped"].include?(vaccination.status) %>
+		<span><small><%= vaccination.updated_at.strftime("Updated on: %b %e %Y at %I:%M%p %Z") %></small></span>
+		<% end %>
+		<% if not ["given", "skipped", "notgiven"].include?(vaccination.status) %>
+			<%= form_for(vaccination, method: :put , remote: true) do |f| %>
+			<div>
+				<%= hidden_field_tag "vacination_id", vaccination.id %>
+				<%= hidden_field_tag "btn-type", "set-given" %>
+			</div>
+				<%= f.submit "Done", class: "btn btn-xsmall btn-success pull-right inset-buttons" %>
+			<% end %>
+			<%= form_for(vaccination, method: :put , remote: true) do |f| %>
+			<div>
+				<%= hidden_field_tag "vacination_id", vaccination.id %>
+				<%= hidden_field_tag "btn-type", "set-skipped" %>
+			</div>
+				<%= f.submit "Skip", class: "btn btn-xsmall btn-danger pull-right inset-buttons" %>
+			<% end %>
+		<% end %>
+	</div>
+	<% end %>

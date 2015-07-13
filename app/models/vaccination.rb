@@ -24,6 +24,14 @@ class Vaccination < ActiveRecord::Base
 
   validates :status, presence: true, inclusion: { in: %w(given duenow skipped notgiven) }
 
+  def set_given
+    self.update_attribute(:status, "given")
+  end
+
+  def set_skipped
+    self.update_attribute(:status, "skipped")
+  end
+
   private
   def create_vaccination_due_dates
     # get child dob

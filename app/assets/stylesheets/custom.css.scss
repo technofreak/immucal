@@ -120,34 +120,59 @@ footer {
 
 /* vaccination item styles */ 
 
-.element_box {
-  clear: both;
-  padding: 10px;
-  margin-top: 20px;
-  @include box_sizing;
-
-  border-color: $grayLight;
-  border-width: 1px;
-  border-style: solid;
+.vacci_box {
+  height: 260px;
+  border: 1px solid;
   border-radius: 10px;
+  margin: 20px 10px;
+  padding: 10px 10px 0px 10px; 
+  box-shadow: 5px 5px 2px $grayMediumLight;
 
-  font-family: Monaco, Menlo, Consolas, 'Courier New', monospace;
+  font-family: Helvetica, Verdana, Arial, sans-serif;
+
+  p {
+    padding-bottom: 30px;
+  }
 }
 
-.vacc_notgiven {
-  background-color: #FFFACD;
+.inset-buttons {
+  margin-left: 2px;
 }
 
-.vacc_given {
-  background-color: #F0FFF0;
+.status_notgiven {
+  background-color: #efefef;
+  border-color: #728c9f;
+
+  h4 {
+    color: #007694;
+  }
 }
 
-.vacc_due {
-  background-color: #F08080;
+.status_skipped {
+  background-color: #cccccc;
+  border-color: #000000;
+
+  h4 {
+    color: #728c9f;
+  }
 }
 
-.vacc_skipped {
-  background-color: $grayDark;
+.status_duenow {
+  background-color: #ffe4e1;
+  border-color: #c72d2d;
+
+  h4 {
+    color: #c72d2d;
+  }
+}
+
+.status_given {
+  background-color: #98ff8f;
+  border-color: #6cc214;
+
+  h4 {
+    color: #006666;
+  }
 }
 
 /* sidebar */
