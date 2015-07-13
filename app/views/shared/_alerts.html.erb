@@ -1,4 +1,9 @@
 <% @alerts = current_alerts(current_user) %>
+<% if not @alerts == "There are no alerts" %>
+<div class="alert alert-danger">
+<% end %>
+<% if @alerts == "There are no alerts" %>
 <div class="alerts">
+<% end %>
 	<%= @alerts %>
 </div>
