@@ -3,7 +3,7 @@ class VaccinesController < ApplicationController
 
   def index
     set_new_child
-    @vaccines = Vaccine.all
+    @vaccines = Vaccine.order(:age_start, :age_end).all
   end
 
   def show
